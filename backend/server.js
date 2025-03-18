@@ -6,8 +6,8 @@ import { v2 as cloudinary } from "cloudinary";
 
 import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
-import postRoutes from "./routes/post.route.js";
-import notificationRoutes from "./routes/notification.route.js";
+import postRoutes from "./routes/post.routes.js";
+import notificationRoutes from "./routes/notification.routes.js";
 
 import connectMongoDB from "./db/connectMongoDB.js";
 
