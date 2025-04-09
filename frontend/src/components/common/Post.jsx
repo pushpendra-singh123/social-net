@@ -21,8 +21,63 @@ const Post = ({ post }) => {
   const isMyPost = authUser._id === post.user._id;
 
   const formattedDate = formatPostDate(post.createdAt);
-  // Neha write your 2nd code here
 
+  const { mutate: deletePost, isPending: isDeleting } = useMutation({
+		mutationFn: async () => {
+			try {
+				const res = await fetch(/api/posts/${post._id}, {
+					method: "DELETE",
+				});
+				const data = await res.json();
+
+				if (!res.ok) {
+					throw new Error(data.error || "Something went wrong");
+				}
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: () => {
+			toast.success("Post deleted successfully");
+			queryClient.invalidateQueries({ queryKey: ["posts"] });
+		},
+	});
+
+	const { mutate: likePost, isPending: isLiking } = useMutation({
+		mutationFn: async () => {
+			try {
+				const res = await fetch(/api/posts/like/${post._id}, {
+					method: "POST",
+				});
+				const data = await res.json();
+				if (!res.ok) {
+					throw new Error(data.error || "Something went wrong");
+				}
+				return data;
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+		onSuccess: (updatedLikes) => {
+			// this is not the best UX, bc it will refetch all posts
+			// queryClient.invalidateQueries({ queryKey: ["posts"] });
+
+			// instead, update the cache directly for that post
+			queryClient.setQueryData(["posts"], (oldData) => {
+				return oldData.map((p) => {
+					if (p._id === post._id) {
+						return { ...p, likes: updatedLikes };
+					}
+					return p;
+				});
+			});
+		},
+		onError: (error) => {
+			toast.error(error.message);
+		},
+	});
+  
   const isCommenting = false;
 
   const handleDeletePost = () => {};
