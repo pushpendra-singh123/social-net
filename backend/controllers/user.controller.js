@@ -10,8 +10,7 @@ export const getUserProfile = async (req, res) => {
 
   try {
     const user = await User.findOne({ username }).select("-password");
-    // if (!user) return res.status(404).json({ message: "User not found" });
-    if (!user) return res.status(404).json({ error: error.message });
+    if (!user) return res.status(404).json({ message: "User not found" });
 
     res.status(200).json(user);
   } catch (error) {
@@ -79,7 +78,7 @@ export const getSuggestedUsers = async (req, res) => {
       { $sample: { size: 10 } },
     ]);
 
-    // 1,2,3,4,5,6,      7,8,9,10
+    
     const filteredUsers = users.filter(
       (user) => !usersFollowedByMe.following.includes(user._id)
     );
@@ -109,9 +108,11 @@ export const updateUser = async (req, res) => {
       (!newPassword && currentPassword) ||
       (!currentPassword && newPassword)
     ) {
-      return res.status(400).json({
-        error: "Please provide both current password and new password",
-      });
+      return res
+        .status(400)
+        .json({
+          error: "Please provide both current password and new password",
+        });
     }
 
     if (currentPassword && newPassword) {

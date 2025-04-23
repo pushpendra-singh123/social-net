@@ -12,17 +12,17 @@ import LoadingSpinner from "./LoadingSpinner";
 import { formatPostDate } from "../../utils/date";
 
 const Post = ({ post }) => {
-  const [comment, setComment] = useState("");
-  const { data: authUser } = useQuery({ queryKey: ["authUser"] });
-  const queryClient = useQueryClient();
-  const postOwner = post.user;
-  const isLiked = post.likes.includes(authUser._id);
+	const [comment, setComment] = useState("");
+	const { data: authUser } = useQuery({ queryKey: ["authUser"] });
+	const queryClient = useQueryClient();
+	const postOwner = post.user;
+	const isLiked = post.likes.includes(authUser._id);
 
-  const isMyPost = authUser._id === post.user._id;
+	const isMyPost = authUser._id === post.user._id;
 
-  const formattedDate = formatPostDate(post.createdAt);
+	const formattedDate = formatPostDate(post.createdAt);
 
-  const { mutate: deletePost, isPending: isDeleting } = useMutation({
+	const { mutate: deletePost, isPending: isDeleting } = useMutation({
 		mutationFn: async () => {
 			try {
 				const res = await fetch(`/api/posts/${post._id}`, {
@@ -78,7 +78,7 @@ const Post = ({ post }) => {
 		},
 	});
 
-  const { mutate: commentPost, isPending: isCommenting } = useMutation({
+	const { mutate: commentPost, isPending: isCommenting } = useMutation({
 		mutationFn: async () => {
 			try {
 				const res = await fetch(`/api/posts/comment/${post._id}`, {
@@ -108,24 +108,24 @@ const Post = ({ post }) => {
 		},
 	});
 
-  const handleDeletePost = () => {
-    deletePost();
-  };
+	const handleDeletePost = () => {
+		deletePost();
+	};
 
-  const handlePostComment = (e) => {
-    e.preventDefault();
-    if(isCommenting) return;
-    commentPost();
-  };
+	const handlePostComment = (e) => {
+		e.preventDefault();
+		if (isCommenting) return;
+		commentPost();
+	};
 
-  const handleLikePost = () => {
-    if (isLiking) return;
-    likePost();
-  };
+	const handleLikePost = () => {
+		if (isLiking) return;
+		likePost();
+	};
 
-  return (
-    <>
-     <div className='flex gap-2 items-start p-4 border-b border-gray-700'>
+	return (
+		<>
+			<div className='flex gap-2 items-start p-4 border-b border-gray-700'>
 				<div className='avatar'>
 					<Link to={`/profile/${postOwner.username}`} className='w-8 rounded-full overflow-hidden'>
 						<img src={postOwner.profileImg || "/avatar-placeholder.png"} />
@@ -250,7 +250,7 @@ const Post = ({ post }) => {
 					</div>
 				</div>
 			</div>
-    </>
-  );
+		</>
+	);
 };
 export default Post;
