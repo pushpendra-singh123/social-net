@@ -57,6 +57,15 @@ const ProfilePage = () => {
   const memberSinceDate = formatMemberSinceDate(user?.createdAt);
   const amIFollowing = authUser?.following.includes(user?._id);
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (file.size > 5 * 1024 * 1024) { // 5MB limit
+      alert("File size is too large.Upload file < 5MB.");
+      return;
+    }
+    setProfileImg(file);
+  };
+
   const handleImgChange = (e, state) => {
     const file = e.target.files[0];
     if (file) {
