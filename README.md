@@ -42,7 +42,7 @@ Built using the MERN stack and enhanced with real-time and responsive features, 
 #### │   │   ├── auth.controller.js
 #### │   │   ├── post.controller.js
 #### │   │   └── user.controller.js
-## │   ├── db/
+#### │   ├── db/
 #### │   │   └── connectMongoDB.js
 #### │   ├── routes/
 #### │   │   ├── auth.route.js
