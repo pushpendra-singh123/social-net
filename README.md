@@ -37,12 +37,12 @@ Built using the MERN stack and enhanced with real-time and responsive features, 
 
 ## 📁 Project Structure
 ##  TwitterClone/
-├── backend/
-│   ├── controllers/
-│   │   ├── auth.controller.js
-│   │   ├── post.controller.js
-│   │   └── user.controller.js
-│   ├── db/
+## ├── backend/
+## │   ├── controllers/
+## │   │   ├── auth.controller.js
+## │   │   ├── post.controller.js
+## │   │   └── user.controller.js
+## │   ├── db/
 │   │   └── connectMongoDB.js
 │   ├── routes/
 │   │   ├── auth.route.js
