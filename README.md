@@ -36,7 +36,54 @@ Built using the MERN stack and enhanced with real-time and responsive features, 
 ---
 
 ## 📁 Project Structure
-  add soon buddy.😎
+##  TwitterClone/
+├── backend/
+│   ├── controllers/
+│   │   ├── auth.controller.js
+│   │   ├── post.controller.js
+│   │   └── user.controller.js
+│   ├── db/
+│   │   └── connectMongoDB.js
+│   ├── routes/
+│   │   ├── auth.route.js
+│   │   ├── post.route.js
+│   │   └── user.route.js
+│   ├── server.js
+│   └── .env
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── common/
+│   │   │   │   ├── Posts.jsx
+│   │   │   │   └── Sidebar.jsx
+│   │   │   ├── skeletons/
+│   │   │   │   └── ProfileHeaderSkeleton.jsx
+│   │   │   └── svgs/
+│   │   │       └── X.jsx
+│   │   ├── hooks/
+│   │   │   ├── useFollow.jsx
+│   │   │   └── useUpdateUserProfile.jsx
+│   │   ├── pages/
+│   │   │   ├── auth/
+│   │   │   │   ├── login/
+│   │   │   │   │   └── LoginPage.jsx
+│   │   │   │   └── signup/
+│   │   │   │       └── SignUpPage.jsx
+│   │   │   ├── notification/
+│   │   │   │   └── NotificationPage.jsx
+│   │   │   └── profile/
+│   │   │       └── ProfilePage.jsx
+│   │   ├── utils/
+│   │   │   ├── date.js
+│   │   │   └── db/
+│   │   │       └── dummy.js
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   ├── vite.config.js
+│   └── .env
+├── package.json
+└── README.md
 
 
 # By P.S.R. Group(Mini Project)
