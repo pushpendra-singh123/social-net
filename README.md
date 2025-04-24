@@ -39,4 +39,4 @@ Built using the MERN stack and enhanced with real-time and responsive features, 
   add soon buddy.😎
 
 
-# By P.S.R.
+# By P.S.R. Group(Mini Project)
